@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // timer
 
-    let deadline = '2023-09-15';
+    let deadline = '2023-09-28';
 
     function getTimeRemaining(endTime) {
         let t = Date.parse(endTime) -  Date.parse(new Date()),
@@ -88,4 +88,28 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     setClock('timer', deadline);
+
+    // Modal
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    more.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; // это нужно для того, чтобы не было прокрутки страницы, когда открыто модальное окно
+    });
+
+    close.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
 });
+
+// let age = document.getElementById('age');
+// function showUser(surname, name) {
+//     alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+// }
+// showUser.apply(age, ["Горький","Максим"]);
